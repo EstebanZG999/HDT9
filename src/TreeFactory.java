@@ -5,10 +5,10 @@ public class TreeFactory {
             throw new IllegalArgumentException("Tree type must not be null");
         }
 
-        switch (treeType.toUpperCase()) {
-            case "AVL_TREE":
+        switch (treeType.toLowerCase()) {
+            case "avl":
                 return new AVLTree<>();
-            case "RED_BLACK_TREE":
+            case "redblack":
                 return new RedBlackTree<>();
             default:
                 throw new IllegalArgumentException("Invalid tree type");

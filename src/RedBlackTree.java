@@ -1,3 +1,11 @@
+/**
+ * La clase RedBlackTree implementa una estructura de datos de árbol binario de búsqueda
+ * autoequilibrado (árbol rojo-negro) con claves y valores asociados.
+ *
+ * @param <K> El tipo de claves almacenadas en el árbol, que deben implementar la interfaz Comparable.
+ * @param <V> El tipo de valores asociados a las claves almacenadas en el árbol.
+ */
+
 public class RedBlackTree<K extends Comparable<K>, V> implements Tree<K, V> {
 
     private static final boolean RED = true;
@@ -89,6 +97,15 @@ public class RedBlackTree<K extends Comparable<K>, V> implements Tree<K, V> {
         root.color = BLACK;
     }
 
+    // Métodos privados para manejar el color, rotaciones y ajustes...
+
+    /**
+     * Inserta una nueva clave y su valor asociado en el árbol rojo-negro.
+     * Si la clave ya existe en el árbol, no se realiza ninguna acción.
+     *
+     * @param key   La clave a insertar en el árbol.
+     * @param value El valor asociado a la clave.
+     */
     public void insert(K key, V value) {
         Node newNode = new Node(key, value);
         if (root == null) {
@@ -108,6 +125,14 @@ public class RedBlackTree<K extends Comparable<K>, V> implements Tree<K, V> {
             fixInsert(newNode);
         }
     }
+
+    /**
+     * Busca y devuelve el valor asociado a una clave en el árbol rojo-negro.
+     * Si la clave no se encuentra en el árbol, devuelve null.
+     *
+     * @param key La clave cuyo valor asociado se desea buscar.
+     * @return El valor asociado a la clave si se encuentra, de lo contrario null.
+     */
     public V search(K key) {
         Node currentNode = root;
         while (currentNode != null) {

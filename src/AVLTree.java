@@ -1,3 +1,10 @@
+/**
+ * La clase AVLTree implementa una estructura de datos de árbol binario de búsqueda
+ * autoequilibrado (AVL) con claves y valores asociados.
+ *
+ * @param <K> El tipo de claves almacenadas en el árbol, que deben implementar la interfaz Comparable.
+ * @param <V> El tipo de valores asociados a las claves almacenadas en el árbol.
+ */
 public class AVLTree<K extends Comparable<K>, V> implements Tree<K, V> {
 
     private class Node {
@@ -36,6 +43,11 @@ public class AVLTree<K extends Comparable<K>, V> implements Tree<K, V> {
         return x;
     }
 
+    /**
+     * Crea un nuevo nodo con la clave y el valor especificados.
+     *
+     * @param x   La clave del nodo.
+     */
     private Node leftRotate(Node x) {
         Node y = x.right;
         Node T2 = y.left;
@@ -46,6 +58,13 @@ public class AVLTree<K extends Comparable<K>, V> implements Tree<K, V> {
         return y;
     }
 
+    /**
+     * Inserta una nueva clave y su valor asociado en el árbol AVL.
+     * Si la clave ya existe en el árbol, no se realiza ninguna acción.
+     *
+     * @param key   La clave a insertar en el árbol.
+     * @param value El valor asociado a la clave.
+     */
     @Override
     public void insert(K key, V value) {
         root = insertRecursively(root, key, value);
@@ -86,6 +105,13 @@ public class AVLTree<K extends Comparable<K>, V> implements Tree<K, V> {
         return node;
     }
 
+    /**
+     * Busca y devuelve el valor asociado a una clave en el árbol AVL.
+     * Si la clave no se encuentra en el árbol, devuelve null.
+     *
+     * @param key La clave cuyo valor asociado se desea buscar.
+     * @return El valor asociado a la clave si se encuentra, de lo contrario null.
+     */
     @Override
     public V search(K key) {
         Node currentNode = root;
